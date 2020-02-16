@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:circles/widgets/wall_of_posts.dart';
+import 'package:circles/widgets/sign_up_page.dart';
+import 'package:circles/widgets/log_in_home.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,24 +12,15 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     logInHandler() {
-      var url = 'http://192.168.0.10:1337/parse/classes/Circle_Session';
+      var url = 'http://192.168.0.10:3000/user/login';
       var body = {
-        "sessionToken": "r:d384a315072e27681be40694bb66cc8a",
-        "user": {
-          "__type": "Pointer",
-          "className": "InstagramTemplate2__User",
-          "objectId": "OldqukfDjN"
-        },
-        "createdWith": {"action": "signup", "authProvider": "password"},
-        "restricted": false,
-        "installationId": "d3810ba2-294b-4f75-b3ba-6f674fced303",
-        "expiresAt": {"__type": "Date", "iso": "2020-03-04T07:45:23.040Z"}
+        'username': usernameController.text,
+        'password': passwordController.text
       };
       http
           .post(
         url,
         headers: {
-          'X-Parse-Application-Id': 'myAppId',
           'Content-Type': 'application/json',
         },
         body: jsonEncode(body),
@@ -37,9 +29,9 @@ class SignInPage extends StatelessWidget {
         print(response.body);
         print('hello1');
       });
-            Navigator.push(
+      Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => WallOfPosts()),
+        MaterialPageRoute(builder: (context) => LogInHome()),
       );
     }
 
@@ -57,6 +49,21 @@ class SignInPage extends StatelessWidget {
                 TextField(
                   controller: passwordController,
                   decoration: InputDecoration(hintText: 'password'),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('not a memeber ?'),
+                    InkWell(
+                      child: Text("Sign Up here"),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUpPage()),
+                        );
+                      },
+                    ),
+                  ],
                 ),
                 RaisedButton(
                   color: Color(0xFFa386d9),

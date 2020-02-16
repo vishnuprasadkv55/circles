@@ -1,17 +1,19 @@
+import 'package:circles/widgets/card_types/card_expanded.dart';
 import 'package:circles/widgets/card_types/text_only.dart';
 import 'package:circles/widgets/post_header.dart';
 import 'package:flutter/material.dart';
 
 class PostCard extends StatelessWidget {
   final postType;
-  PostCard(this.postType);
+  final postIndex;
+  PostCard(this.postType, this.postIndex);
   @override
   Widget build(BuildContext context) {
     getCardType() {
       switch (postType) {
         case 'T':
           {
-            return TextOnly();
+            return TextOnly(postIndex);
           }
           break;
         case 'TP':
@@ -28,17 +30,27 @@ class PostCard extends StatelessWidget {
       return Text('unIdentified');
     }
 
-    return Container(
-      child: Card(
-        child: InkWell(
+    return Material(
           child: Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 0, 25),
-            child: Column(
-              children: <Widget>[
-                PostHeader(),
-                getCardType()
-              ],),
-          ),
+        child: Card(
+          child: InkWell(
+              child: Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 25),
+                child: Column(
+                  children: <Widget>[
+                    PostHeader('round'),
+                    getCardType(),
+                  ],
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) {
+                    return CardExpanded();
+                  }),
+                );
+              }),
         ),
       ),
     );

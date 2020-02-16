@@ -9,11 +9,7 @@ class WallOfPosts extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(5, 20, 5, 10),
         child: ListView(
           children: <Widget>[
-            PostCard('T'),
-            PostCard('T'),
-            PostCard('T'),
-            PostCard('T'),
-            PostCard('T'),
+            PostCard('T',1)
           ],
         ),
       ),

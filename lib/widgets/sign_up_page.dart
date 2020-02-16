@@ -11,14 +11,30 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     signUpHandler() {
+      var url = 'http://192.168.0.10:3000/user';
+      var body = {
+        'username': usernameController.text,
+        'password': passwordController.text
+      };
+      http
+          .post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(body),
+      )
+          .then((response) {
+        print(response.body);
+        print('hello1');
+      });
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => SignInPage()),
       );
     }
 
-    return Scaffold(
-      body: Column(
+    return Column(
         children: <Widget>[
           Container(
             margin: EdgeInsets.fromLTRB(10, 120, 10, 10),
@@ -43,7 +59,6 @@ class SignUpPage extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
+      );
   }
 }
