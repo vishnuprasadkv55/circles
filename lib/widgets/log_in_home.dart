@@ -1,5 +1,4 @@
 import 'package:circles/widgets/add_post.dart';
-import 'package:circles/widgets/media_upload.dart';
 import 'package:circles/widgets/profile_page.dart';
 import 'package:circles/widgets/wall_of_posts.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +12,17 @@ class LogInHome extends StatefulWidget {
 class _LogInHomeState extends State<LogInHome> {
   PageController _pageController;
   int _currentIndex = 0;
-
+  callback() {
+    this.setState(() {
+      _currentIndex = 0;
+      _pageController.jumpToPage(_currentIndex);
+    });
+  }
+AddPost addPost;
   @override
   void initState() {
     super.initState();
+  addPost = new AddPost(callback);
     _pageController = PageController();
   }
 
@@ -69,9 +75,8 @@ class _LogInHomeState extends State<LogInHome> {
               color: Colors.blue,
             ),
             Container(
-              child: AddPost(),
+              child: addPost,
             ),
-            
             Container(
               color: Colors.grey,
             ),

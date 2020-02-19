@@ -11,6 +11,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     signUpHandler() {
+        print('hello12');
       var url = 'http://192.168.0.10:3000/user';
       var body = {
         'username': usernameController.text,

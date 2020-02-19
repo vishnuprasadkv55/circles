@@ -1,5 +1,6 @@
 import 'package:circles/widgets/card_types/card_expanded.dart';
 import 'package:circles/widgets/card_types/text_only.dart';
+import 'package:circles/widgets/post_footer.dart';
 import 'package:circles/widgets/post_header.dart';
 import 'package:flutter/material.dart';
 
@@ -31,28 +32,34 @@ class PostCard extends StatelessWidget {
     }
 
     return Material(
-          child: Container(
+      child: Container(
         child: Card(
-          child: InkWell(
-              child: Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 25),
-                child: Column(
-                  children: <Widget>[
-                    PostHeader('round'),
-                    getCardType(),
-                  ],
+            child: Column(
+          children: <Widget>[
+            InkWell(
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 25),
+                  child: Column(
+                    children: <Widget>[
+                      PostHeader('round'),
+                      getCardType(),
+                    ],
+                  ),
                 ),
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) {
-                    return CardExpanded();
-                  }),
-                );
-              }),
-        ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) {
+                      return CardExpanded();
+                    }),
+                  );
+                }),
+            PostFooter()
+          ],
+        )),
       ),
     );
   }
 }
+
+

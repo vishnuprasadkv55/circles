@@ -1,4 +1,3 @@
-import 'package:circles/widgets/add_post.dart';
 import 'package:circles/widgets/sign_up_page.dart';
 import 'package:flutter/material.dart';
 
