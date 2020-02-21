@@ -1,4 +1,5 @@
 import 'package:circles/widgets/add_post.dart';
+import 'package:circles/widgets/message_screen/message_ui.dart';
 import 'package:circles/widgets/profile_page.dart';
 import 'package:circles/widgets/wall_of_posts.dart';
 import 'package:flutter/material.dart';
@@ -12,17 +13,18 @@ class LogInHome extends StatefulWidget {
 class _LogInHomeState extends State<LogInHome> {
   PageController _pageController;
   int _currentIndex = 0;
-  callback() {
+  favCallback() {
     this.setState(() {
       _currentIndex = 0;
       _pageController.jumpToPage(_currentIndex);
     });
   }
-AddPost addPost;
+
+  AddPost addPost;
   @override
   void initState() {
     super.initState();
-  addPost = new AddPost(callback);
+    addPost = new AddPost(favCallback);
     _pageController = PageController();
   }
 
@@ -58,7 +60,10 @@ AddPost addPost;
             title: Text('Messages'),
             icon: Icon(Icons.message),
           ),
-          NavBarItem(title: Text('Profile'), icon: Icon(Icons.face)),
+          NavBarItem(
+            title: Text('Profile'),
+            icon: Icon(Icons.face),
+          ),
         ],
       ),
       body: SizedBox.expand(
@@ -78,7 +83,7 @@ AddPost addPost;
               child: addPost,
             ),
             Container(
-              color: Colors.grey,
+              child: MessageUi(),
             ),
             Container(
               child: ProfilePage(),

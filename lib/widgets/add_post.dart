@@ -9,8 +9,8 @@ import 'package:http/http.dart' as http;
 class AddPost extends StatelessWidget {
   final postTextController = TextEditingController();
   final SharedPref sharedPref = SharedPref();
-  Function callback;
-  AddPost(this.callback);
+  Function favCallback;
+  AddPost(this.favCallback);
   @override
   Widget build(BuildContext context) {
       sharePost() async {
@@ -51,7 +51,7 @@ class AddPost extends StatelessWidget {
       print(response.body);
       print('hello1');
     });
-    this.callback();
+    this.favCallback();
   }
     return SingleChildScrollView(
       child: Card(
