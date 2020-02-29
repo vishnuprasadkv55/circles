@@ -15,16 +15,26 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     logInHandler() {
-      var url = 'http://192.168.0.12:3000/user/login';
+      var url = 'http://192.168.0.14:3000/user/login';
       var body = {
         'username': usernameController.text,
         'password': passwordController.text
       };
       print(jsonEncode(body));
-      var response = {"error":false,"message":"Validation successful!","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBQ0wiOnt9LCJhdmF0YXIiOnsiX190eXBlIjoiRmlsZSIsIm5hbWUiOiIiLCJ1cmwiOiIifSwiYmlvIjoiIiwiYmxvY2tlZEJ5IjpbXSwiZnVsbE5hbWUiOiIiLCJpZCI6IjM3ZjI2YmY5LTg0ZmUtNDg0MS1hNzJkLTdlNjNiNGY2YWRjYSIsImlzRm9sbG93aW5nIjpbXSwiaXNSZXBvcnRlZCI6ZmFsc2UsImlzVmVyaWZpZWQiOmZhbHNlLCJtdXRlZEJ5IjpbXSwibm90SW50ZXJlc3RpbmdGb3IiOltdLCJyZXBvcnRNZXNzYWdlIjoiIiwidXNlcm5hbWUiOiJhc3dpbm8iLCJ1c2VybmFtZUxvd2VyY2FzZSI6IiIsIndlYnNpdGUiOiIiLCJpYXQiOjE1ODE5NTc2MjMsImV4cCI6MTU4MTk1OTA2M30.-m1yxH-BJfFqNL5910Dd3U4eW7hiyasNzLXJaqglgL4","userObj":"{\"ACL\":{},\"avatar\":{\"__type\":\"File\",\"name\":\"\",\"url\":\"\"},\"bio\":\"\",\"blockedBy\":[],\"fullName\":\"\",\"id\":\"37f26bf9-84fe-4841-a72d-7e63b4f6adca\",\"isFollowing\":[],\"isReported\":false,\"isVerified\":false,\"mutedBy\":[],\"notInterestingFor\":[],\"reportMessage\":\"\",\"username\":\"aswino\",\"usernameLowercase\":\"\",\"website\":\"\"}"};
-      User user = new User(response["token"], response["userObj"]);
-      user.printDetails();
-      sharedPref.save('user', user.toJson());
+      http
+          .post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(body),
+      )
+          .then((response) {
+        var responseObj = jsonDecode(response.body);
+        print(responseObj);
+        User user = new User(token: responseObj['token'], userDetails: responseObj['userObj']);
+        sharedPref.save('user', user.toJson());
+      });
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => LogInHome()),
@@ -40,11 +50,11 @@ class SignInPage extends StatelessWidget {
               children: <Widget>[
                 TextField(
                   controller: usernameController,
-                  decoration: InputDecoration(hintText: 'username'),
+                  decoration: InputDecoration.collapsed(hintText: 'username'),
                 ),
                 TextField(
                   controller: passwordController,
-                  decoration: InputDecoration(hintText: 'password'),
+                  decoration: InputDecoration.collapsed(hintText: 'password'),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

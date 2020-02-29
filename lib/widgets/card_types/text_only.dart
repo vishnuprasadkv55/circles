@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class TextOnly extends StatelessWidget {
   final postIndex;
-  TextOnly(this.postIndex);
+  final post;
+  TextOnly(this.postIndex, this.post);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,13 +15,18 @@ class TextOnly extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.fromLTRB(60, 0, 10, 0),
                 child: Text(
-                    'This will show the text on the screen using the default text for the OS. Roboto on Android and Helvetiva Neue on iOS. Let’s start playing around. Create a build method like this so you can see what’s happening with all the changes.'),
+                  post,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ),
             ),
           ),
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return CardExpanded();
+              return CardExpanded(post, postIndex);
             }));
           }),
     );

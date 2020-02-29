@@ -173,7 +173,7 @@ class NavBarItem {
   NavBarItem({
     @required this.icon,
     @required this.title,
-    this.activeColor = Colors.blue,
+    this.activeColor = Colors.red,
     this.textAlign,
     this.inactiveColor,
   }) {

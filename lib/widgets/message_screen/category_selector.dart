@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CategorySelector extends StatefulWidget {
+  final Function changeTab;
+  CategorySelector({this.changeTab});
   @override
   _CategorySelectorState createState() => _CategorySelectorState();
 }
@@ -22,6 +24,7 @@ class _CategorySelectorState extends State<CategorySelector> {
                 setState(() {
                   selectedIndex = index;
                 });
+                widget.changeTab(index);
               },
               child: Padding(
                 padding: EdgeInsets.symmetric(

@@ -43,11 +43,11 @@ class SignUpPage extends StatelessWidget {
               children: <Widget>[
                 TextField(
                   controller: usernameController,
-                  decoration: InputDecoration(hintText: 'username'),
+                  decoration: InputDecoration.collapsed(hintText: 'username'),
                 ),
                 TextField(
                   controller: passwordController,
-                  decoration: InputDecoration(hintText: 'password'),
+                  decoration: InputDecoration.collapsed(hintText: 'password'),
                 ),
                 RaisedButton(
                   color: Color(0xFFa386d9),

@@ -17,7 +17,7 @@ final UserModel currentUser = UserModel(
 final UserModel sophia = UserModel(
     id: 1,
     name: 'Sophia',
-    imageUrl: 'https://images.unsplash.com/photo-1519742866993-66d3cfef4bbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');
+    imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80');
 final UserModel stephen = UserModel(
     id: 2,
     name: 'Stephen',
@@ -25,22 +25,22 @@ final UserModel stephen = UserModel(
 final UserModel george = UserModel(
   id: 3,
   name: 'George',
-  imageUrl: 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+  imageUrl: 'https://images.unsplash.com/photo-1505503693641-1926193e8d57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
 );
 final UserModel julia = UserModel(
   id: 4,
   name: 'Julia',
-  imageUrl: 'https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+  imageUrl: 'https://images.unsplash.com/photo-1535982606227-475c9bf94018?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
 );
 final UserModel peter = UserModel(
   id: 5,
   name: 'Peter',
-  imageUrl: 'https://images.unsplash.com/photo-1506919258185-6078bba55d2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=515&q=80',
+  imageUrl: 'https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
 );
 final UserModel emily = UserModel(
   id: 5,
   name: 'Emily',
-  imageUrl: 'https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+  imageUrl: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
 );
 final UserModel marina = UserModel(
   id: 6,
@@ -50,7 +50,7 @@ final UserModel marina = UserModel(
 final UserModel olivia = UserModel(
   id: 7,
   name: 'Olivia',
-  imageUrl: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+  imageUrl: 'https://images.unsplash.com/photo-1519742866993-66d3cfef4bbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
 );
 
 List<UserModel> favourites = [marina, stephen, emily, julia, olivia];
@@ -73,7 +73,7 @@ List<MessageModel> chats = [
   MessageModel(
     sender: emily,
     time: '3:30 PM',
-    text: 'This is a premium icon which is suitable for commercial work: Use it commercially. No attribution required',
+    text: 'This is a premium icon   which is suitable for commercial work: Use it commercially. No attribution required',
     isLiked: false,
     unread: false,
   ),

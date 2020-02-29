@@ -10,6 +10,39 @@ class ChatHome extends StatefulWidget {
 }
 
 class _ChatHomeState extends State<ChatHome> {
+  var selectedIndex = 0;
+  setSelectedIndex(index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
+  getChatTab() {
+    switch (selectedIndex) {
+      case 0:
+        {
+          return Column(
+            children: <Widget>[
+              FavouriteContacts(),
+              RecentChats(),
+            ],
+          );
+        }
+      case 1:
+        {
+          return Text('data');
+        }
+      case 2:
+        {
+          return Text('data2');
+        }
+      case 3:
+        {
+          return Text('data3');
+        }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +73,9 @@ class _ChatHomeState extends State<ChatHome> {
       ),
       body: Column(
         children: <Widget>[
-          CategorySelector(),
+          CategorySelector(
+            changeTab: setSelectedIndex,
+          ),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -50,12 +85,7 @@ class _ChatHomeState extends State<ChatHome> {
                   topRight: Radius.circular(30.0),
                 ),
               ),
-              child: Column(
-                children: <Widget>[
-                  FavouriteContacts(),
-                  RecentChats(),
-                ],
-              ),
+              child: getChatTab(),
             ),
           ),
         ],

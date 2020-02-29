@@ -1,20 +1,19 @@
 class User {
   var token;
   var userDetails;
-  User(this.token, this.userDetails) {
-    printDetails();
+  User({this.token, this.userDetails}) {
+    // printDetails();
   }
   printDetails() {
     print(token);
-    print(userDetails);
+    print('user' + userDetails);
   }
+
   toJson() {
-    return {
-      'token': token,
-      'userDetails': userDetails
-    };
+    return {'token': token, 'userDetails': userDetails};
   }
-  User.fromJson(e){
+
+  User.fromJson(e) {
     token = e.token;
     userDetails = e.userDetails;
     printDetails();

@@ -7,14 +7,15 @@ import 'package:flutter/material.dart';
 class PostCard extends StatelessWidget {
   final postType;
   final postIndex;
-  PostCard(this.postType, this.postIndex);
+  final post;
+  PostCard(this.postType, this.postIndex,this.post);
   @override
   Widget build(BuildContext context) {
     getCardType() {
       switch (postType) {
         case 'T':
           {
-            return TextOnly(postIndex);
+            return TextOnly(postIndex,post);
           }
           break;
         case 'TP':
@@ -50,7 +51,7 @@ class PostCard extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) {
-                      return CardExpanded();
+                      return CardExpanded(post,postIndex);
                     }),
                   );
                 }),
